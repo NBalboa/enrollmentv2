@@ -339,3 +339,15 @@
             background: white;
             color: #333;
         }
+
+        .error {
+        color: 	#ee2400;
+        }
+
+        .success {
+            color: green;
+        }
+
+        h1 {
+            color: red;
+        }

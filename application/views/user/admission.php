@@ -17,15 +17,29 @@
             <li><a href="enlistment.html">&nbsp;Logout</a></li>
         </ul>
     </div>
+
+
+
     <div class="container">
+        <div class="error">
+<?php if(null !== ($this->session->flashdata('input_errors'))) {?>
+<?php   foreach($this->session->flashdata('input_errors') as $error){?>
+                <?= $error ?>
+<?php }?>
+<?php }?>    
+            </div>
+
         <div class="header">
             <h2>Western Mindanao State University</h2>
             <h2>Admission Form</h2>
         </div>
+
+
+
         <div class="form">
             <div>
 
-                <form action="<?= base_url("Admission/add_student") ?>" method="POST">
+                <form action="<?= base_url("Admission/new_student") ?>" method="POST">
                 <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                     <div class="picture">
                         <p>2x2 Colored I.D picture with white background</p>
@@ -43,7 +57,7 @@
 
                     <div class="college">
                         <div class="input-id">   
-                            <label for="#"><b>College of</b></label>
+                            <label for="program"><b>College of</b></label>
                             <select name="program" id="program">                            
                                 <option value="BSCS">BS Computer Science</option>
                                 <option value="ABPS">BS Political Science</option>
@@ -110,8 +124,8 @@
 
                     <div class="fields-id">
                         <div class="input-id">
-                            <label for="stud_id"><b>Student I.D Number</b></label>                              
-                            <input type="text" name="stud_id" disabled>                                
+                            <label for="student_id"><b>Student I.D Number</b></label>                              
+                            <input type="text" name="student_id">                          
                         </div>
 
                         <div class="input-program">   
@@ -163,15 +177,15 @@
                             <div class="input-field-1">
                                 <label for="gender" id="gender"><b>Gender</b></label>
                                 <br>
-                                    <select for="gender">
+                                    <select name="gender">
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>
                             </div>
 
                             <div class="input-field-1">
-                                <label for="dof"><b>Date of Birth</b></label><br>
-                                <input name="dof" type="date" placeholder="mm/dd/yyyy" >
+                                <label for="dob"><b>Date of Birth</b></label><br>
+                                <input name="dob" type="date" placeholder="mm/dd/yyyy" >
                             </div>
                         </div>
 
@@ -181,7 +195,10 @@
                                 <label for="pob">Place of Birth</label>
                                 <input name="pob" type="text" placeholder="Enter address" >
                             </div>
-
+                            <div class="input-field">
+                                <label for="nationality">Nationality</label>
+                                <input name="nationality" type="text">
+                            </div>
                             <div class="input-field">
                                 <label for="civil_status">Civil Status</label>
                                 <input name="civil_status" type="text" placeholder="Enter your status" >

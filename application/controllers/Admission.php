@@ -4,13 +4,21 @@
 
         public function __construct()
         {
-           parent::__construct();
-           $this->load->model('Student');
+            parent::__construct();
+            $this->load->model('Student');
         }
-        public function add_student () {
+
+        public function new_student () {
             $result = $this->Student->validate_student($this->input->post());
-            var_dump($result);
-         }
+            if ($result === 'valid'){
+                $this->Student->add_student($this->input->post());
+                redirect('admission');
+            }
+            else{
+                $this->session->set_flashdata('input_errors', $result);
+                redirect('admission');
+            }
+        }
     } 
 
 ?>
