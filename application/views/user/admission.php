@@ -23,9 +23,10 @@
             <h2>Admission Form</h2>
         </div>
         <div class="form">
-            <form action="#">
+            <div>
 
-                <form action="#">
+                <form action="<?= base_url("Admission/add_student") ?>" method="POST">
+                <input type="hidden" name="<?=$this->security->get_csrf_token_name();?>" value="<?=$this->security->get_csrf_hash();?>" />
                     <div class="picture">
                         <p>2x2 Colored I.D picture with white background</p>
                     </div>
@@ -44,91 +45,92 @@
                         <div class="input-id">   
                             <label for="#"><b>College of</b></label>
                             <select name="program" id="program">                            
-                                <option value="program1">BS Computer Science</option>
-                                <option value="program1">BS Political Science</option>
-                                <option value="program2">BS Criminology</option>
-                                <option value="program3">BS Social Work</option>
-                                <option value="program4">BS Secondary Education</option>
+                                <option value="BSCS">BS Computer Science</option>
+                                <option value="ABPS">BS Political Science</option>
+                                <option value="BSSW">BS Social Work</option>
                             </select>                               
                         </div>
         
                         <div class="input-id">   
-                            <label for="#"><b>School Year:</b></label>                            
-                            <select name="year" id="">
-                                <option value="year1">2021-2022</option>
-                                <option value="year1">2022-2023</option>
-                                <option value="year1">2023-2024</option>
-                                <option value="year1">2024-2025</option>
-                                <option value="year1">2025-2026</option>
+                            <label for="sy"><b>School Year:</b></label>                            
+                            <select name="sy">
+                                <option value="2021-2022">2021-2022</option>
+                                <option value="2022-2023">2022-2023</option>
+                                <option value="2023-2024">2023-2024</option>
+                                <option value="2024-2025">2024-2025</option>
+                                <option value="2025-2026">2025-2026</option>
                             </select>                               
                         </div>
                     </div>
                 </div>
-
                     <div class="types-admission">
-        
                         <div class="input-admission">   
-                            <label for="#"><b>Type of Admission</b></label>                            
-                            <select name="admission" id="admission">
-                                <option value="admission1">Regular</option>
-                                <option value="admission1">Provisional</option>
-                                <option value="admission1">Probational</option>
-                                <option value="admission1">Non-degree</option>
-                                
+                            <label for="addmission_type"><b>Type of Admission</b></label>                            
+                            <select name="admission_type" id="admission">
+                                <option value="Regular">Regular</option>
+                                <option value="Provisional">Provisional</option>
+                                <option value="Probational">Probational</option>
+                                <option value="Non-degree">Non-degree</option>
                             </select>                               
                         </div>
-        
-        
                         <div class="input-admission">   
-                            <label for="#"><b>Enrollment Status</b></label>                            
-                            <select name="admission" id="admission">
-                                <option value="admission1">Freshmen</option>
-                                <option value="admission1">Transferee</option>
-                                <option value="admission1">Shifter(Returning)</option>
-                                <option value="admission1">Secondary Courser</option>
-                                <option value="admission1">Cross-Enrollee</option>
+                            <label for="enrol_stat"><b>Enrollment Status</b></label>                            
+                            <select name="enrol_stat" id="admission">
+                                <option value="Freshmen">Freshmen</option>
+                                <option value="Transferee">Transferee</option>
+                                <option value="Shifter">Shifter(Returning)</option>
+                                <option value="Secondary Courser">Secondary Courser</option>
+                                <option value="Cross-Enrolle">Cross-Enrollee</option>
                             </select>                               
                         </div>
         
                         <div class="input-admission">   
-                            <label for="#"><b>Programs</b></label>                            
-                            <select name="admission" id="admission">
-                                <option value="admission1">Graduate</option>
-                                <option value="admission1">Distance Education</option>
-                                <option value="admission1">Undergraduate</option>
-                                <option value="admission1">Special Program</option>
-                                <option value="admission1">Non-degree</option>
+                            <label for="programs"><b>Programs</b></label>                            
+                            <select name="programs" id="admission">
+                                <option value="Graduate">Graduate</option>
+                                <option value="Distance Education">Distance Education</option>
+                                <option value="Undergraduate">Undergraduate</option>
+                                <option value="Special Program">Special Program</option>
+                                <option value="Non-degree">Non-degree</option>
                             </select>                               
                         </div>
         
                         <div class="input-admission">   
-                            <label for="#"><b>Semester</b></label>                            
-                            <select name="admission" id="admission">
-                                <option value="admission1">1st Semester</option>
-                                <option value="admission1">2nd Semester</option>
-                                <option value="admission1">Summer</option>
-                                <option value="admission1">1st Trimester</option>
-                                <option value="admission1">2nd Trimester</option>
-                                <option value="admission1">3rd Trimester</option>
-                                <option value="admission1">Summer</option>
+                            <label for="semester"><b>Semester</b></label>                            
+                            <select name="semester" id="admission">
+                                <option value="1st Semester">1st Semester</option>
+                                <option value="2nd Semester">2nd Semester</option>
+                                <option value="Summer">Summer</option>
+                                <option value="1st Trimester">1st Trimester</option>
+                                <option value="2nd Trimester">2nd Trimester</option>
+                                <option value="3rd Trimester">3rd Trimester</option>
                             </select>                               
                         </div>
                     </div>
 
                     <div class="fields-id">
                         <div class="input-id">
-                            <label for="#"><b>Student I.D Number</b></label>                              
-                            <input type="text" placeholder="" required>                                
+                            <label for="stud_id"><b>Student I.D Number</b></label>                              
+                            <input type="text" name="stud_id" disabled>                                
                         </div>
 
                         <div class="input-program">   
-                            <label for="#"><b>Academic Program</b></label>                            
-                            <input type="text" placeholder="" required>                               
+                            <label for="acad_prog"><b>Academic Program</b></label>                            
+                            <select name="acad_prog">
+                                <option value="Bachelor of Science in Computer Science">BSCS</option>
+                                <option value="Bachelor of Arts in Political Science">ABPS</option>
+                                <option value="Bachelor of Science in Social Work">BSSW</option>
+                            </select>                          
                         </div>
 
                         <div class="input-level">   
-                            <label for="#"><b>Year Level</b></label>                            
-                            <input type="text" placeholder="" required>                               
+                            <label for="year_level"><b>Year Level</b></label>   
+                            <select name="year_level">
+                                <option value="1st">1st</option>
+                                <option value="2nd">2nd</option>
+                                <option value="3rd">3rd</option>
+                                <option value="4th">4th</option>
+                            </select>
                         </div>
                     </div>
 
@@ -140,74 +142,74 @@
                         <div class="fields">
 
                             <div class="input-field">
-                                <label for="#">Last Name</label>
-                                <input type="text" placeholder="Enter your last name" required>
+                                <label for="last_name">Last Name</label>
+                                <input name="last_name" type="text" placeholder="Enter your last name" >
                             </div>
 
                             <div class="input-field">
-                                <label for="#">First Name</label>
-                                <input type="text" placeholder="Enter your first name" required>
+                                <label for="first_name">First Name</label>
+                                <input name="first_name" type="text" placeholder="Enter your first name" >
                             </div>
 
 
                             <div class="input-field">
-                                <label for="#">Middle Name</label>
-                                <input type="text" placeholder="Enter your middle name" required>
+                                <label for="middle_name">Middle Name</label>
+                                <input name="middle_name" type="text" placeholder="Enter your middle name" >
                             </div>
                         </div>
 
                         <div class="gender-section">
 
                             <div class="input-field-1">
-                                <label for="#" id="gender"><b>Gender</b></label>
+                                <label for="gender" id="gender"><b>Gender</b></label>
                                 <br>
-                                    <input type="radio" name="gender" id="dot-1" required>
-                                    <label for="#">Male</label>
-                                    <input type="radio" name="gender" id="dot-1" required>
-                                    <label for="#">Female</label>
+                                    <select for="gender">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
                             </div>
 
                             <div class="input-field-1">
-                                <label for="#"><b>Date of Birth</b></label><br>
-                                <input type="date" placeholder="mm/dd/yyyy" required>
+                                <label for="dof"><b>Date of Birth</b></label><br>
+                                <input name="dof" type="date" placeholder="mm/dd/yyyy" >
                             </div>
                         </div>
 
                         <div class="fields">
 
                             <div class="input-field">
-                                <label for="#">Place of Birth</label>
-                                <input type="text" placeholder="Enter address" required>
+                                <label for="pob">Place of Birth</label>
+                                <input name="pob" type="text" placeholder="Enter address" >
                             </div>
 
                             <div class="input-field">
-                                <label for="#">Civil Status</label>
-                                <input type="text" placeholder="Enter your status" required>
+                                <label for="civil_status">Civil Status</label>
+                                <input name="civil_status" type="text" placeholder="Enter your status" >
                             </div>
 
 
                             <div class="input-field">
-                                <label for="#">Religion</label>
-                                <input type="text" placeholder="Enter Religion" required>
+                                <label for="religion">Religion</label>
+                                <input  name="religion" type="text" placeholder="Enter Religion" >
                             </div>
                         </div>
 
                         <div class="fields">
 
                             <div class="input-field">
-                                <label for="#">Ethnicity/Tribe</label>
-                                <input type="text" placeholder="Enter your ethnicity" required>
+                                <label for="tribe">Ethnicity/Tribe</label>
+                                <input name="tribe" type="text" placeholder="Enter your ethnicity" >
                             </div>
 
                             <div class="input-field">
-                                <label for="#">Disability(any)</label>
-                                <input type="text" placeholder="Enter your disability" required>
+                                <label for="disability">Disability(any)</label>
+                                <input name="disability" type="text" placeholder="Enter your disability" >
                             </div>
 
 
                             <div class="input-field">
-                                <label for="#">Scholorship</label>
-                                <input type="text" placeholder="Enter your scholorship" required>
+                                <label for="scholarship">Scholarship</label>
+                                <input name="scholarship" type="text" placeholder="Enter your scholorship" >
                             </div>
                         </div>
 
@@ -216,42 +218,42 @@
                             <span class="title-address"><b>Current Address(City Address)</b></span>
         
                             <div class="input-address">
-                                <input type="text" placeholder="" required>                               
+                                <input name="c_street" type="text" placeholder="" >                               
                             </div>
-                                <label for="#">House or Street No.</label>
+                                <label for="c_street">House or Street No.</label>
         
                             <div class="input-address">
-                                <input type="text" placeholder="" required>                                
+                                <input name="c_barangay" type="text" placeholder="" >                                
                             </div>
-                                <label for="#">Barangay, Town, City</label>
+                                <label for="c_barangay">Barangay, Town, City</label>
         
                             <div class="input-address">
-                                <input type="text" placeholder="" required>                                 
+                                <input name="c_province" type="text" placeholder="" >                                 
                             </div>
-                                <label for="#">Province, Country</label>
+                                <label for="c_province">Province, Country</label>
                         
                             <div class="fields">
 
                                 <div class="input-field2">                               
-                                    <input type="text" placeholder="" required>
-                                    <label for="#">Zip Code</label>
+                                    <input name="c_zipcode" type="text" placeholder="" >
+                                    <label for="c_zipcode">Zip Code</label>
                                 </div>
 
                                 <div class="input-field2">                                
-                                    <input type="text" placeholder="" required>
-                                    <label for="#">Mobile Phone No.</label>
+                                    <input name="c_mobileno" type="text" placeholder="" >
+                                    <label for="c_mobileno">Mobile Phone No.</label>
                                 </div>
 
 
                                 <div class="input-field2">                               
-                                    <input type="text" placeholder="" required>
-                                    <label for="#">Tel ephone No.</label>
+                                    <input name="c_telpho" type="text" placeholder="" >
+                                    <label for="c_telpho">Telephone No.</label>
                                 </div>
                             </div>
                     </div> 
 
                         <div class="permanent">
-                            <input type="checkbox" id="checkbox" name="check"
+                            <input name="same_address" type="checkbox" id="checkbox" name="check"
                             onclick="showCheckbox()"> 
                             <span class="title-address"><b>Permanent Address  </b>(Click checkbox if same information above)</span>
                         </div>
@@ -259,35 +261,35 @@
                     <div class="address" id="permanent-address" >
                             
                             <div class="input-address">
-                                <input type="text" placeholder="" required>                               
+                                <input name="street"type="text" placeholder="" >                               
                             </div>
-                                <label for="#">House or Street No.</label>
+                                <label for="street">House or Street No.</label>
         
                             <div class="input-address">
-                                <input type="text" placeholder="" required>                                
+                                <input name="barangay" type="text" placeholder="" >                                
                             </div>
-                                <label for="#">Barangay, Town, City</label>
+                                <label for="barangay">Barangay, Town, City</label>
         
                             <div class="input-address">
-                                <input type="text" placeholder="" required>                                 
+                                <input name="province" type="text" placeholder="" >                                 
                             </div>
-                                <label for="#">Province, Country</label>
+                                <label for="province">Province, Country</label>
 
                         <div class="fields">
 
                             <div class="input-field2">                               
-                                <input type="text" placeholder="" required>
-                                <label for="#">Zip Code</label>
+                                <input name="zipcode" type="text" placeholder="" >
+                                <label for="zipcode">Zip Code</label>
                             </div>
 
                             <div class="input-field2">                                
-                                <input type="text" placeholder="" required>
-                                <label for="#">Mobile Phone No.</label>
+                                <input name="mobileno" type="text" placeholder="" >
+                                <label for="mobileno">Mobile Phone No.</label>
                             </div>
 
                             <div class="input-field2">                               
-                                <input type="text" placeholder="" required>
-                                <label for="#">Tel ephone No.</label>
+                                <input name="telpho" type="text" placeholder="" >
+                                <label for="telpho">Telephone No.</label>
                             </div>
                         </div>
                     </div>
@@ -296,50 +298,59 @@
                         <div class="fields3">
                             <span class="title-parent"><b>Parents</b></span>
                             <div class="input-parent">
-                                <label for="#">Father's Name:</label>
-                                <input type="text" placeholder="" required>
+                                <label for="father_name">Father's Name:</label>
+                                <input name="father_name" type="text" placeholder="">
                             </div>
 
                             <div class="input-parent">
-                                <label for="#">Educational Attainment:</label>                              
-                                <input type="text" placeholder="" required>                                
+                                <label for="f_edu">Educational Attainment:</label>                              
+                                <input name="f_edu" type="text" placeholder="" >                                
                             </div>
-
                             <div class="input-parent">   
-                                <label for="#">Occupation:</label>                            
-                                <input type="text" placeholder="" required>                               
+                                <label for="f_occupation">Occupation:</label>                            
+                                <input name="f_occupation" type="text" placeholder="" >                               
+                            </div>
+                            <div class="input-parent">
+                                <label for="mother_name">Mother's Name:</label>
+                                <input name="mother_name" type="text" placeholder="">
+                            </div>
+                            <div class="input-parent">
+                                <label for="m_edu">Educational Attainment:</label>                              
+                                <input name="m_edu" type="text" placeholder="" >                                
+                            </div>
+                            <div class="input-parent">   
+                                <label for="m_occupation">Occupation:</label>                            
+                                <input name="m_occupation" type="text" placeholder="" >                               
                             </div>
                         </div>
 
                         <div class="fields3">
                             <span class="title-parent"><b>Guardian</b></span>
                             <div class="input-parent">
-                                <label for="#">Guardian's Name:</label>
-                                <input type="text" placeholder="" required>
+                                <label for="guardian_name">Guardian's Name:</label>
+                                <input name="guardian_name" type="text" placeholder="" >
                             </div>
 
                             <div class="input-parent">
-                                <label for="#">Relationship:</label>                              
-                                <input type="text" placeholder="" required>                                
+                                <label for="relationship">Relationship:</label>                              
+                                <input name="relationship"type="text" placeholder="" >                                
                             </div>
 
                             <div class="input-parent">   
-                                <label for="#">Address:</label>                            
-                                <input type="text" placeholder="Street/Barangay/City/Province" required>                               
+                                <label for="g_address">Address:</label>                            
+                                <input name="g_address"type="text" placeholder="Street/Barangay/City/Province" >                               
                             </div>
 
                             <div class="input-parent">   
-                                <label for="#">Mobile No./ Telephone No.:</label>                            
-                                <input type="text" placeholder="" required>                               
+                                <label for="g_contact">Mobile No./ Telephone No.:</label>                            
+                                <input name="g_contact" type="text" placeholder="" >                               
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="button">
-                    <button>
-                        Admit
-                    </button>
+                    <input type="submit" value="Admit"/>
                 </div>
             </form>
         </div>
