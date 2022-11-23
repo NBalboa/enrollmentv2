@@ -12,7 +12,7 @@
         <ul>
             <li><a href="<?= base_url('/') ?>"><img src="<?= base_url('assets/img/dashboard-icon.jpg')?>" alt="" height="30px">&nbsp; Dashboard</a></li>
             <li><a href="<?= base_url('admission') ?>"><img src="<?= base_url("assets/img/admission icon.jpg ")?>" alt="admission icon" height="29px" width="38px">&nbsp; Admission</a></li>
-            <li><a href="<?= base_url('entlistment') ?>"><img src="<?= base_url("assets/img/icon-enlistment1.jpg") ?>" alt="Enlishment icon"height="30px" width="40px">&nbsp;Enlishment</a></li>
+            <li><a href="<?= base_url('enlistment') ?>"><img src="<?= base_url("assets/img/icon-enlistment1.jpg") ?>" alt="Enlishment icon"height="30px" width="40px">&nbsp;Enlishment</a></li>
             <li><a href="enlistment.html">&nbsp;Logout</a></li>
         </ul>
     </div>

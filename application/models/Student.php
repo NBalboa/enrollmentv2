@@ -2,6 +2,10 @@
     class Student extends CI_Model{
 
 
+        public function get_student(){
+            return $this->db->query("SELECT * FROM students ORDER BY created_at DESC")->row_array();
+        }
+
         public function add_student($post){
 
             $dob = date('Y-m-h', strtotime($post['dob'])); 
@@ -27,8 +31,14 @@
                 $tel = $post['telpho'];
             }
 
-            $query = "INSERT INTO students(student_id, first_name, middle_name, last_name, gender, date_of_birth, place_of_birth, nationality, civil_status, tribe ,religion, current_address, current_zip, current_mobile ,current_telephone, permanent_address, permanent_zip, permanent_mobile, permanent_telephone, f_name, f_edu_attainment, f_occupation, m_name,m_edu_attainment, m_occupation, g_name, g_relationship, g_address, g_telephone, created_at, updated_at )
-                    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $query = "INSERT INTO students(student_id, first_name, middle_name, last_name, gender, 
+                    date_of_birth, place_of_birth, nationality, civil_status, tribe ,religion, 
+                    current_address, current_zip, current_mobile ,current_telephone, permanent_address, 
+                    permanent_zip, permanent_mobile, permanent_telephone, f_name, f_edu_attainment, 
+                    f_occupation, m_name,m_edu_attainment, m_occupation, g_name, g_relationship, g_address, 
+                    g_telephone, department, admission_type, enrol_stat, program, semester, acad_prog ,level,
+                    created_at, updated_at)
+                    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             $values = array(
                 $this->security->xss_clean($post['student_id']),
                 $this->security->xss_clean($post['first_name']),
@@ -59,6 +69,13 @@
                 $this->security->xss_clean($post['relationship']),
                 $this->security->xss_clean($post['g_address']),
                 $this->security->xss_clean($post['g_contact']),
+                $this->security->xss_clean($post['program']),
+                $this->security->xss_clean($post['admission_type']),
+                $this->security->xss_clean($post['enrol_stat']),
+                $this->security->xss_clean($post['programs']),
+                $this->security->xss_clean($post['semester']),
+                $this->security->xss_clean($post['acad_prog']),
+                $this->security->xss_clean($post['year_level']),
                 $this->security->xss_clean(date("Y-m-d H:i:s")),
                 $this->security->xss_clean(date("Y-m-d H:i:s"))
             );
@@ -67,6 +84,7 @@
         }
 
         public function validate_student($post){
+
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
